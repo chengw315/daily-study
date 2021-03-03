@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+  redis-1:
+    image: redis
+    container_name: redis-1
+    ports:
+      - 6301:6379
+    command: redis-server --requirepass chengw
+    volumes:
+      - /root/volume/redis-1/data:/data
+      - /root/volume/redis-1/redis.conf:/etc/redis/redis.conf
+
+  redis-2:
+    image: redis
+    container_name: redis-2
+    ports:
+      - 6302:6379
+    command: redis-server --requirepass chengw
+    volumes:
+      - /root/volume/redis-2/data:/data
+      - /root/volume/redis-2/redis.conf:/etc/redis/redis.conf
+
+  redis-3:
+    image: redis
+    container_name: redis-3
+    ports:
+      - 6303:6379
+    command: redis-server --requirepass chengw
+    volumes:
+      - /root/volume/redis-3/data:/data
+      - /root/volume/redis-3/redis.conf:/etc/redis/redis.conf

@@ -1,0 +1,356 @@
+
+=====================================
+2020-12-01 02:35:31 7fa45330c700 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 40 seconds
+-----------------
+BACKGROUND THREAD
+-----------------
+srv_master_thread loops: 3128856 srv_active, 0 srv_shutdown, 2266197 srv_idle
+srv_master_thread log flush and writes: 5395048
+----------
+SEMAPHORES
+----------
+OS WAIT ARRAY INFO: reservation count 627396
+OS WAIT ARRAY INFO: signal count 711977
+Mutex spin waits 1963652, rounds 19053300, OS waits 114073
+RW-shared spins 598442, rounds 15668846, OS waits 462464
+RW-excl spins 33119, rounds 1727697, OS waits 35080
+Spin rounds per wait: 9.70 mutex, 26.18 RW-shared, 52.17 RW-excl
+------------------------
+LATEST FOREIGN KEY ERROR
+------------------------
+2020-10-14 08:26:55 7fa459e8e700  Cannot drop table `columbia_simlink`.`bump_dvc_type`
+because it is referenced by `columbia_simlink`.`bump_meta`
+------------------------
+LATEST DETECTED DEADLOCK
+------------------------
+2020-10-26 06:58:09 7fa4587b4700
+*** (1) TRANSACTION:
+TRANSACTION 1708711497, ACTIVE 0 sec fetching rows
+mysql tables in use 1, locked 1
+LOCK WAIT 18 lock struct(s), heap size 2936, 3606 row lock(s), undo log entries 4
+MySQL thread id 203876, OS thread handle 0x7fa45aabe700, query id 101017768 172.24.0.1 smart updating
+update locator_notice as t
+
+
+
+        set t.is_urgency = 0
+        where t.is_urgency = 1
+
+            AND t.user_id = 12
+
+
+            AND t.device_no = '9040323938'
+
+
+            AND t.content = 2
+*** (1) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 8350 page no 32 n bits 248 index `PRIMARY` of table `challenger_smart`.`locator_notice` trx id 1708711497 lock_mode X waiting
+Record lock, heap no 181 PHYSICAL RECORD: n_fields 11; compact format; info bits 0
+ 0: len 4; hex 80001180; asc     ;;
+ 1: len 6; hex 000065d8de48; asc   e  H;;
+ 2: len 7; hex a6000126490110; asc    &I  ;;
+ 3: len 10; hex 39303430333233393338; asc 9040323938;;
+ 4: len 1; hex 84; asc  ;;
+ 5: len 14; hex 6e62e5ae9ae4bd8de599a8393338; asc nb         938;;
+ 6: len 4; hex 7ffffffe; asc     ;;
+ 7: len 5; hex 99a7b4ee89; asc      ;;
+ 8: len 4; hex 8000000c; asc     ;;
+ 9: len 4; hex 80000000; asc     ;;
+ 10: SQL NULL;
+
+*** (2) TRANSACTION:
+TRANSACTION 1708711496, ACTIVE 0 sec starting index read
+mysql tables in use 1, locked 1
+3 lock struct(s), heap size 1184, 2 row lock(s), undo log entries 1
+MySQL thread id 203882, OS thread handle 0x7fa4587b4700, query id 101017769 172.24.0.1 smart updating
+update locator_notice as t
+
+
+
+        set t.is_urgency = 0
+        where t.is_urgency = 1
+
+            AND t.user_id = 12
+
+
+            AND t.device_no = '9040323938'
+
+
+            AND t.content = 2
+*** (2) HOLDS THE LOCK(S):
+RECORD LOCKS space id 8350 page no 32 n bits 248 index `PRIMARY` of table `challenger_smart`.`locator_notice` trx id 1708711496 lock_mode X locks rec but not gap
+Record lock, heap no 181 PHYSICAL RECORD: n_fields 11; compact format; info bits 0
+ 0: len 4; hex 80001180; asc     ;;
+ 1: len 6; hex 000065d8de48; asc   e  H;;
+ 2: len 7; hex a6000126490110; asc    &I  ;;
+ 3: len 10; hex 39303430333233393338; asc 9040323938;;
+ 4: len 1; hex 84; asc  ;;
+ 5: len 14; hex 6e62e5ae9ae4bd8de599a8393338; asc nb         938;;
+ 6: len 4; hex 7ffffffe; asc     ;;
+ 7: len 5; hex 99a7b4ee89; asc      ;;
+ 8: len 4; hex 8000000c; asc     ;;
+ 9: len 4; hex 80000000; asc     ;;
+ 10: SQL NULL;
+
+*** (2) WAITING FOR THIS LOCK TO BE GRANTED:
+RECORD LOCKS space id 8350 page no 7 n bits 320 index `PRIMARY` of table `challenger_smart`.`locator_notice` trx id 1708711496 lock_mode X waiting
+Record lock, heap no 225 PHYSICAL RECORD: n_fields 11; compact format; info bits 0
+ 0: len 4; hex 80000016; asc     ;;
+ 1: len 6; hex 00000e637e0e; asc    c~ ;;
+ 2: len 7; hex b9000002990110; asc        ;;
+ 3: len 10; hex 6c6d3838383838303637; asc lm88888067;;
+ 4: len 1; hex 81; asc  ;;
+ 5: len 10; hex e79c9fe8bda638303637; asc       8067;;
+ 6: len 4; hex 80000005; asc     ;;
+ 7: len 5; hex 99a6bb0c4a; asc     J;;
+ 8: len 4; hex 8000000a; asc     ;;
+ 9: len 4; hex 80000001; asc     ;;
+ 10: SQL NULL;
+
+*** WE ROLL BACK TRANSACTION (2)
+------------
+TRANSACTIONS
+------------
+Trx id counter 1780006167
+Purge done for trx's n:o < 1780006167 undo n:o < 0 state: running but idle
+History list length 2838
+LIST OF TRANSACTIONS FOR EACH SESSION:
+---TRANSACTION 1780005885, not started
+MySQL thread id 408222, OS thread handle 0x7fa4586f1700, query id 171876139 10.16.10.139 root cleaning up
+---TRANSACTION 1780006165, not started
+MySQL thread id 408313, OS thread handle 0x7fa459c86700, query id 171876452 172.24.0.1 smart cleaning up
+---TRANSACTION 1780006151, not started
+MySQL thread id 408310, OS thread handle 0x7fa458d8b700, query id 171876456 172.24.0.1 smart cleaning up
+---TRANSACTION 1780005975, not started
+MySQL thread id 408216, OS thread handle 0x7fa45b8b5700, query id 171876260 10.16.10.139 root cleaning up
+---TRANSACTION 1780005979, not started
+MySQL thread id 408214, OS thread handle 0x7fa458a7f700, query id 171876265 10.16.10.139 root cleaning up
+---TRANSACTION 1780005993, not started
+MySQL thread id 408220, OS thread handle 0x7fa45bb3f700, query id 171876280 10.16.10.139 root cleaning up
+---TRANSACTION 1780005913, not started
+MySQL thread id 408226, OS thread handle 0x7fa459731700, query id 171876167 10.16.10.139 root cleaning up
+---TRANSACTION 1780005945, not started
+MySQL thread id 408221, OS thread handle 0x7fa459e4d700, query id 171876207 10.16.10.139 root cleaning up
+---TRANSACTION 1780006010, not started
+MySQL thread id 408218, OS thread handle 0x7fa45a2df700, query id 171876299 10.16.10.139 root cleaning up
+---TRANSACTION 1780005914, not started
+MySQL thread id 408219, OS thread handle 0x7fa453aeb700, query id 171876169 10.16.10.139 root cleaning up
+---TRANSACTION 0, not started
+MySQL thread id 408339, OS thread handle 0x7fa453cb2700, query id 171868528 10.200.0.98 limadw cleaning up
+---TRANSACTION 1780006156, not started
+MySQL thread id 408285, OS thread handle 0x7fa45af91700, query id 171876445 172.24.0.1 smart cleaning up
+---TRANSACTION 0, not started
+MySQL thread id 408328, OS thread handle 0x7fa45330c700, query id 171876457 10.200.0.98 limadw init
+SHOW ENGINE INNODB STATUS
+---TRANSACTION 1779995324, not started
+MySQL thread id 408326, OS thread handle 0x7fa452b2d700, query id 171867698 10.200.0.98 limadw cleaning up
+---TRANSACTION 1780006162, not started
+MySQL thread id 408257, OS thread handle 0x7fa45b423700, query id 171876449 172.24.0.1 smart cleaning up
+---TRANSACTION 1780006159, not started
+MySQL thread id 408237, OS thread handle 0x7fa459bc3700, query id 171876447 172.24.0.1 smart cleaning up
+---TRANSACTION 1779978265, not started
+MySQL thread id 408250, OS thread handle 0x7fa4594a7700, query id 171852256 10.16.10.42 tracker cleaning up
+---TRANSACTION 1779978260, not started
+MySQL thread id 408245, OS thread handle 0x7fa458fd4700, query id 171852251 10.16.10.42 tracker_open cleaning up
+---TRANSACTION 1780004634, not started
+MySQL thread id 408263, OS thread handle 0x7fa45bd88700, query id 171875148 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779942170, not started
+MySQL thread id 408244, OS thread handle 0x7fa458a3e700, query id 171820974 10.16.10.130 global cleaning up
+---TRANSACTION 1779943405, not started
+MySQL thread id 408243, OS thread handle 0x7fa459a3d700, query id 171821948 10.16.10.130 global cleaning up
+---TRANSACTION 1779943406, not started
+MySQL thread id 408242, OS thread handle 0x7fa453a69700, query id 171821950 10.16.10.130 global cleaning up
+---TRANSACTION 1779945357, not started
+MySQL thread id 408241, OS thread handle 0x7fa45b978700, query id 171823791 10.16.10.130 global cleaning up
+---TRANSACTION 1779942118, not started
+MySQL thread id 408240, OS thread handle 0x7fa45a771700, query id 171820914 10.16.10.130 global cleaning up
+---TRANSACTION 1779900419, not started
+MySQL thread id 408182, OS thread handle 0x7fa459015700, query id 171784732 10.16.10.130 sunshine cleaning up
+---TRANSACTION 1779900418, not started
+MySQL thread id 408181, OS thread handle 0x7fa4605eb700, query id 171784731 10.16.10.162 lima cleaning up
+---TRANSACTION 1779952339, not started
+MySQL thread id 408173, OS thread handle 0x7fa453bef700, query id 171829846 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779952206, not started
+MySQL thread id 407952, OS thread handle 0x7fa4530c3700, query id 171829730 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779879470, not started
+MySQL thread id 407944, OS thread handle 0x7fa453b6d700, query id 171766748 10.200.0.216 simlink cleaning up
+---TRANSACTION 0, not started
+MySQL thread id 407945, OS thread handle 0x7fa458ed0700, query id 171765742 10.200.0.216 simlink cleaning up
+---TRANSACTION 1780004613, not started
+MySQL thread id 407884, OS thread handle 0x7fa45be4b700, query id 171875136 172.24.0.1 simlink cleaning up
+---TRANSACTION 1780005962, not started
+MySQL thread id 406053, OS thread handle 0x7fa453820700, query id 171876246 10.16.10.130 cucc cleaning up
+---TRANSACTION 1779900520, not started
+MySQL thread id 402846, OS thread handle 0x7fa453924700, query id 171875046 10.16.10.3 limadw cleaning up
+---TRANSACTION 1780003001, not started
+MySQL thread id 402845, OS thread handle 0x7fa4538a2700, query id 171873729 172.24.0.1 smart cleaning up
+---TRANSACTION 1779634896, not started
+MySQL thread id 401953, OS thread handle 0x7fa453104700, query id 171554569 10.16.10.130 cucc cleaning up
+---TRANSACTION 1779892667, not started
+MySQL thread id 401939, OS thread handle 0x7fa45bc02700, query id 171777971 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779892676, not started
+MySQL thread id 401918, OS thread handle 0x7fa459a7e700, query id 171777984 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779845014, not started
+MySQL thread id 401917, OS thread handle 0x7fa453861700, query id 171736570 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779892675, not started
+MySQL thread id 401919, OS thread handle 0x7fa45369a700, query id 171777983 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779945351, not started
+MySQL thread id 401714, OS thread handle 0x7fa453555700, query id 171823781 10.16.10.130 global cleaning up
+---TRANSACTION 1779945350, not started
+MySQL thread id 401715, OS thread handle 0x7fa45a528700, query id 171823779 10.16.10.130 global cleaning up
+---TRANSACTION 1779945770, not started
+MySQL thread id 401713, OS thread handle 0x7fa458e0d700, query id 171824070 10.16.10.130 global cleaning up
+---TRANSACTION 1779945777, not started
+MySQL thread id 401685, OS thread handle 0x7fa453a28700, query id 171824074 10.16.10.130 global cleaning up
+---TRANSACTION 1779942172, not started
+MySQL thread id 401684, OS thread handle 0x7fa459939700, query id 171820976 10.16.10.130 global cleaning up
+---TRANSACTION 1779942053, not started
+MySQL thread id 401668, OS thread handle 0x7fa460528700, query id 171820819 10.16.10.130 global cleaning up
+---TRANSACTION 1779830545, not started
+MySQL thread id 401664, OS thread handle 0x7fa459362700, query id 171724088 172.24.0.1 smart cleaning up
+---TRANSACTION 1779952292, not started
+MySQL thread id 401524, OS thread handle 0x7fa45a7b2700, query id 171829818 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779892742, not started
+MySQL thread id 401416, OS thread handle 0x7fa45a5aa700, query id 171778064 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779992157, not started
+MySQL thread id 395725, OS thread handle 0x7fa458877700, query id 171864214 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779906009, not started
+MySQL thread id 384654, OS thread handle 0x7fa45ac44700, query id 171876395 10.16.10.42 tracker_lianxin cleaning up
+---TRANSACTION 1778831444, not started
+MySQL thread id 384665, OS thread handle 0x7fa459f10700, query id 171876376 10.16.10.42 tracker_open cleaning up
+---TRANSACTION 1780005606, not started
+MySQL thread id 384661, OS thread handle 0x7fa45919b700, query id 171876394 10.16.10.42 tracker_lianxin cleaning up
+---TRANSACTION 1773038880, not started
+MySQL thread id 384659, OS thread handle 0x7fa453bae700, query id 171876396 10.16.10.42 tracker_lianxin cleaning up
+---TRANSACTION 1779852075, not started
+MySQL thread id 384225, OS thread handle 0x7fa45a979700, query id 171742727 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779892682, not started
+MySQL thread id 384025, OS thread handle 0x7fa4537df700, query id 171777989 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779852071, not started
+MySQL thread id 383897, OS thread handle 0x7fa4581dd700, query id 171742723 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779952179, not started
+MySQL thread id 383178, OS thread handle 0x7fa45c053700, query id 171829701 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779952438, not started
+MySQL thread id 378339, OS thread handle 0x7fa452c72700, query id 171829912 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779852074, not started
+MySQL thread id 354623, OS thread handle 0x7fa45338e700, query id 171742726 172.24.0.1 simlink cleaning up
+---TRANSACTION 1778476864, not started
+MySQL thread id 339059, OS thread handle 0x7fa45be0a700, query id 170555070 10.16.10.162 lima cleaning up
+---TRANSACTION 1779994942, not started
+MySQL thread id 337382, OS thread handle 0x7fa4605aa700, query id 171866527 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779900462, not started
+MySQL thread id 327753, OS thread handle 0x7fa453e38700, query id 171784806 10.16.10.3 limadw cleaning up
+---TRANSACTION 1779900532, not started
+MySQL thread id 327754, OS thread handle 0x7fa45a9fb700, query id 171784857 10.16.10.3 limadw cleaning up
+---TRANSACTION 1778476869, not started
+MySQL thread id 326444, OS thread handle 0x7fa45ac85700, query id 170555081 10.16.10.130 cucc cleaning up
+---TRANSACTION 1779852063, not started
+MySQL thread id 321914, OS thread handle 0x7fa4587f5700, query id 171742712 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779900404, not started
+MySQL thread id 305847, OS thread handle 0x7fa45b72f700, query id 171784697 172.24.0.1 simlink cleaning up
+---TRANSACTION 1779900401, not started
+MySQL thread id 305848, OS thread handle 0x7fa45a29e700, query id 171784693 172.24.0.1 simlink cleaning up
+---TRANSACTION 1778476855, not started
+MySQL thread id 288240, OS thread handle 0x7fa459529700, query id 170555049 10.16.10.130 sunshine cleaning up
+---TRANSACTION 1779900396, not started
+MySQL thread id 139325, OS thread handle 0x7fa458836700, query id 171784685 10.16.10.115 lease cleaning up
+---TRANSACTION 1779900392, not started
+MySQL thread id 222, OS thread handle 0x7fa458f11700, query id 171784680 172.24.0.1 share cleaning up
+---TRANSACTION 1779900394, not started
+MySQL thread id 221, OS thread handle 0x7fa458f52700, query id 171784683 172.24.0.1 share cleaning up
+---TRANSACTION 1779900400, not started
+MySQL thread id 683, OS thread handle 0x7fa453db6700, query id 171784687 10.16.10.130 sunshine cleaning up
+---TRANSACTION 1779900391, not started
+MySQL thread id 684, OS thread handle 0x7fa453d75700, query id 171784678 10.16.10.130 sunshine cleaning up
+---TRANSACTION 1779900405, not started
+MySQL thread id 682, OS thread handle 0x7fa453df7700, query id 171784664 10.16.10.115 lease cleaning up
+---TRANSACTION 1779900390, not started
+MySQL thread id 679, OS thread handle 0x7fa453eba700, query id 171784666 10.16.10.163 singapore cleaning up
+---TRANSACTION 1779900389, not started
+MySQL thread id 680, OS thread handle 0x7fa453e79700, query id 171784672 10.16.10.163 singapore cleaning up
+---TRANSACTION 1779900402, not started
+MySQL thread id 677, OS thread handle 0x7fa453f3c700, query id 171784696 10.16.10.162 lima cleaning up
+---TRANSACTION 1779900399, not started
+MySQL thread id 676, OS thread handle 0x7fa453f7d700, query id 171784690 10.16.10.162 lima cleaning up
+---TRANSACTION 1779900395, not started
+MySQL thread id 678, OS thread handle 0x7fa453efb700, query id 171784684 10.16.10.3 limadw cleaning up
+---TRANSACTION 1779900393, not started
+MySQL thread id 675, OS thread handle 0x7fa453fbe700, query id 171784681 10.16.10.3 limadw cleaning up
+---TRANSACTION 1779900406, not started
+MySQL thread id 674, OS thread handle 0x7fa453fff700, query id 171784679 10.16.10.130 global cleaning up
+---TRANSACTION 1779900388, not started
+MySQL thread id 673, OS thread handle 0x7fa458057700, query id 171784669 10.16.10.130 global cleaning up
+---TRANSACTION 1779900397, not started
+MySQL thread id 671, OS thread handle 0x7fa45bf4f700, query id 171784686 10.16.10.130 cucc cleaning up
+---TRANSACTION 1779900387, not started
+MySQL thread id 670, OS thread handle 0x7fa4591dc700, query id 171784667 10.16.10.130 cucc cleaning up
+--------
+FILE I/O
+--------
+I/O thread 0 state: waiting for completed aio requests (insert buffer thread)
+I/O thread 1 state: waiting for completed aio requests (log thread)
+I/O thread 2 state: waiting for completed aio requests (read thread)
+I/O thread 3 state: waiting for completed aio requests (read thread)
+I/O thread 4 state: waiting for completed aio requests (read thread)
+I/O thread 5 state: waiting for completed aio requests (read thread)
+I/O thread 6 state: waiting for completed aio requests (write thread)
+I/O thread 7 state: waiting for completed aio requests (write thread)
+I/O thread 8 state: waiting for completed aio requests (write thread)
+I/O thread 9 state: waiting for completed aio requests (write thread)
+Pending normal aio reads: 0 [0, 0, 0, 0] , aio writes: 0 [0, 0, 0, 0] ,
+ ibuf aio reads: 0, log i/o's: 0, sync i/o's: 0
+Pending flushes (fsync) log: 0; buffer pool: 0
+685136 OS file reads, 131429084 OS file writes, 5345382 OS fsyncs
+0.00 reads/s, 0 avg bytes/read, 19.32 writes/s, 1.07 fsyncs/s
+-------------------------------------
+INSERT BUFFER AND ADAPTIVE HASH INDEX
+-------------------------------------
+Ibuf: size 1, free list len 1446, seg size 1448, 1333 merges
+merged operations:
+ insert 1669, delete mark 37906, delete 1291
+discarded operations:
+ insert 0, delete mark 0, delete 0
+Hash table size 1106381, node heap has 1961 buffer(s)
+25.00 hash searches/s, 2.57 non-hash searches/s
+---
+LOG
+---
+Log sequence number 275048557700
+Log flushed up to   275048557457
+Pages flushed up to 275043913367
+Last checkpoint at  275043913367
+0 pending log writes, 0 pending chkp writes
+101755245 log i/o's done, 18.65 log i/o's/second
+----------------------
+BUFFER POOL AND MEMORY
+----------------------
+Total memory allocated 549453824; in additional pool allocated 0
+Dictionary memory allocated 4730593
+Buffer pool size   32767
+Free buffers       1024
+Database pages     29782
+Old database pages 10973
+Modified db pages  454
+Pending reads 0
+Pending writes: LRU 0, flush list 0, single page 0
+Pages made young 235625, not young 12008645
+0.00 youngs/s, 0.00 non-youngs/s
+Pages read 682764, created 140879, written 28856677
+0.00 reads/s, 0.00 creates/s, 0.65 writes/s
+Buffer pool hit rate 1000 / 1000, young-making rate 0 / 1000 not 0 / 1000
+Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
+LRU len: 29782, unzip_LRU len: 0
+I/O sum[26]:cur[0], unzip sum[0]:cur[0]
+--------------
+ROW OPERATIONS
+--------------
+0 queries inside InnoDB, 0 queries in queue
+0 read views open inside InnoDB
+Main thread process no. 1, id 140343937173248, state: sleeping
+Number of rows inserted 4794678, updated 102883922, deleted 276879, read 7885819406
+0.02 inserts/s, 17.60 updates/s, 0.00 deletes/s, 461.89 reads/s
+----------------------------
+END OF INNODB MONITOR OUTPUT
+============================

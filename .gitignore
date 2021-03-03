@@ -1,0 +1,12 @@
+/*/.gradle
+/*/build
+/*/target
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### gradle ###
+.gradle/
+/kotlin-test/.gradle/

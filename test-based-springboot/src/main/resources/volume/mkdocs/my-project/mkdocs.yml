@@ -1,0 +1,4 @@
+site_name: 在线文档
+copyright: Copyright &copy; 2021 <a href="https://www.4399.com/">4399</a>.
+theme:
+  name: 'material'

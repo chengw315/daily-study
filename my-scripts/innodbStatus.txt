@@ -1,0 +1,137 @@
+=====================================
+2020-10-09 16:36:16 0x7f093066c700 INNODB MONITOR OUTPUT
+=====================================
+Per second averages calculated from the last 19 seconds
+
+-----------------
+BACKGROUND THREAD
+-----------------
+srv_master_thread loops: 12792 srv_active, 0 srv_shutdown, 3206601 srv_idle        //主线程运行情况
+srv_master_thread log flush and writes: 3219393
+
+----------
+SEMAPHORES
+----------
+OS WAIT ARRAY INFO: reservation count 3617748
+OS WAIT ARRAY INFO: signal count 10039036
+RW-shared spins 0, rounds 153753905, OS waits 1864901
+RW-excl spins 0, rounds 36981783, OS waits 953434
+RW-sx spins 2244, rounds 66229, OS waits 2158
+Spin rounds per wait: 153753905.00 RW-shared, 36981783.00 RW-excl, 29.51 RW-sx
+
+------------
+TRANSACTIONS
+------------
+Trx id counter 660290
+Purge done for trx's n:o < 660287 undo n:o < 0 state: running but idle
+History list length 24
+LIST OF TRANSACTIONS FOR EACH SESSION:
+---TRANSACTION 421152931891128, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931890208, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931892968, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931892048, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931889288, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931888368, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931887448, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931886528, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931885608, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931884688, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931883768, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+---TRANSACTION 421152931882848, not started
+0 lock struct(s), heap size 1136, 0 row lock(s)
+
+--------
+FILE I/O                                                                          //IO线程
+--------
+I/O thread 0 state: waiting for completed aio requests (insert buffer thread)     //插入缓冲线程、日志线程 * 1，读、写线程 * 4
+I/O thread 1 state: waiting for completed aio requests (log thread)
+I/O thread 2 state: waiting for completed aio requests (read thread)
+I/O thread 3 state: waiting for completed aio requests (read thread)
+I/O thread 4 state: waiting for completed aio requests (read thread)
+I/O thread 5 state: waiting for completed aio requests (read thread)
+I/O thread 6 state: waiting for completed aio requests (write thread)
+I/O thread 7 state: waiting for completed aio requests (write thread)
+I/O thread 8 state: waiting for completed aio requests (write thread)
+I/O thread 9 state: waiting for completed aio requests (write thread)
+Pending normal aio reads: [0, 0, 0, 0] , aio writes: [0, 0, 0, 0] ,
+ ibuf aio reads:, log i/o's:, sync i/o's:
+Pending flushes (fsync) log: 0; buffer pool: 0
+1206191753 OS file reads, 1644004 OS file writes, 255927 OS fsyncs
+0.00 reads/s, 0 avg bytes/read, 1.53 writes/s, 0.00 fsyncs/s
+
+-------------------------------------
+INSERT BUFFER AND ADAPTIVE HASH INDEX
+-------------------------------------
+Ibuf: size 1, free list len 3096, seg size 3098, 0 merges                         //merges合并次数，inserts插入记录数，merged recs合并插入的记录数
+merged operations:
+ insert 0, delete mark 0, delete 0
+discarded operations:
+ insert 0, delete mark 0, delete 0
+Hash table size 34679, node heap has 0 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+Hash table size 34679, node heap has 104 buffer(s)
+Hash table size 34679, node heap has 0 buffer(s)
+Hash table size 34679, node heap has 97 buffer(s)
+Hash table size 34679, node heap has 1 buffer(s)
+0.00 hash searches/s, 0.00 non-hash searches/s                                    //自适应哈希索引优化是否排上用场
+---
+LOG
+---
+Log sequence number 249044324685
+Log flushed up to   249044324685
+Pages flushed up to 249044324685
+Last checkpoint at  249044324676
+0 pending log flushes, 0 pending chkp writes
+85000 log i/o's done, 0.00 log i/o's/second
+
+----------------------
+BUFFER POOL AND MEMORY
+----------------------
+Total large memory allocated 137428992
+Dictionary memory allocated 496319
+Buffer pool size   8192                                                            //(页数 *16k = 128M)
+Free buffers       1024
+Database pages     6963
+Old database pages 2550
+Modified db pages  0
+Pending reads      0
+Pending writes: LRU 0, flush list 0, single page 0
+Pages made young 2912514, not young 4422527891
+0.00 youngs/s, 0.00 non-youngs/s
+Pages read 1206165208, created 1038943, written 1411580
+0.00 reads/s, 0.00 creates/s, 0.00 writes/s
+Buffer pool hit rate 1000 / 1000, young-making rate 0 / 1000 not 0 / 1000           //缓冲池命中率
+Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
+LRU len: 6963, unzip_LRU len: 0
+I/O sum[55]:cur[0], unzip sum[0]:cur[0]
+
+--------------
+ROW OPERATIONS
+--------------
+0 queries inside InnoDB, 0 queries in queue
+0 read views open inside InnoDB
+Process ID=1, Main thread ID=139677584463616, state: sleeping
+Number of rows inserted 50034044, updated 0, deleted 602, read 2391246919
+0.00 inserts/s, 0.00 updates/s, 0.00 deletes/s, 0.00 reads/s
+
+----------------------------
+END OF INNODB MONITOR OUTPUT
+============================
+
+
+
+
+

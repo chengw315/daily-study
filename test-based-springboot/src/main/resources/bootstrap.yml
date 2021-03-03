@@ -1,0 +1,24 @@
+spring:
+  redis:
+    host: myIp
+    port: 6379
+    timeout: 3000
+    database: 0
+    password: chengw
+  rabbitmq:
+    host: myIp
+    port: 5672
+    username: root
+    password: root
+    publisher-returns: true  # 发信失败（没到队列） 回调发信者
+    listener:
+      simple:
+        acknowledge-mode: manual # 消费者手动ACK
+
+oss:
+  endpoint: xxx
+  accessKeyId: xxx
+  accessKeySecret: xxx
+  bucketName: xxx
+  expireSecond: 300 #过期时间
+  deviceCertificateDirectoryName: deviceCertificate #设备证书目录

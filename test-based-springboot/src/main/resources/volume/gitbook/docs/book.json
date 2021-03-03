@@ -1,0 +1,48 @@
+{
+  "title": "在线文档",
+  "description": "平台",
+  "links": {
+      "sidebar": {
+        "返回官网": "https://www.4399.com/"
+      }
+  },
+  "gitbook": "3.2.1",
+  "root": ".",
+  "plugins": [
+    "-lunr", "-search", "search-pro", "-highlight",
+    "prism",
+    "back-to-top-button",
+    "expandable-chapters-small",
+    "code",
+    "insert-logo-link-website",
+    "hide-element",
+    "splitter",
+    "-sharing", "sharing-cwj",
+    "custom-favicon",
+    "auto-scroll-table",
+    "lightbox",
+    "anchor-navigation"
+  ],
+  "pluginsConfig": {
+    "insert-logo-link-website": {
+      "url": "/images/logo.png",
+      "link": "https://www.4399.com/",
+      "target": "_blank",
+      "style": "height: 30px"
+    },
+    "sharing": {
+      "all": [
+        "weibo","qq"
+      ]
+    },
+    "hide-element": {
+      "elements": [".gitbook-link"]
+    },
+    "favicon": "images/logo.png"
+
+  },
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  }
+}
