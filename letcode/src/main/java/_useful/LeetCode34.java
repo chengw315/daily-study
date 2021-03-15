@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * 问题点：
  *      1.二分查询需要注意的特殊情况 —— right-left == 1
- *      2.简单复制粘贴容易出错 ，[left,mid] 复制过来只想起来将left改成right 导致[right,mid]左右边界互换
+ *      2.简单复制粘贴容易出错 ，[left,mid] 复制过来却只将left改成right 导致[right,mid]左右边界互换
  *
  * @author chengwj
  * @version 1.0

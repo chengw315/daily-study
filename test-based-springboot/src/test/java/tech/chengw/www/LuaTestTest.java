@@ -37,7 +37,7 @@ public class LuaTestTest {
 
     @Before
     public void init() {
-        redisTemplate.opsForValue().set(key,100);
+        redisTemplate.opsForValue().set(key, 100);
     }
 
     @Test
@@ -74,6 +74,11 @@ public class LuaTestTest {
             });
         }
         countDownLatch.await();
-        assert atomicInteger.get() == time -  time / LuaTest.maxFailNum;
+        assert atomicInteger.get() == time - time / LuaTest.maxFailNum;
+    }
+
+    @Test
+    public void testIncrement() {
+        redisTemplate.opsForHash().increment("zzz", "zzz", 1);
     }
 }

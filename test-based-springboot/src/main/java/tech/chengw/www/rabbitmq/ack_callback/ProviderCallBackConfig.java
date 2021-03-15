@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * description 配置生产者 发信失败的Hook，为什么不在发信的时候挂钩子？这样多个生产者重用rabbitTemplate就不爽了
+ * 【2021.3.15 答：估计RabbitMQ的生产者Hook是针对channel的，所以Hook这么设计】
  *  1. 前提，配置文件开启生产者发信失败回调
  *  2. 创建Hook，挂到RabbitTemplate上
  *
