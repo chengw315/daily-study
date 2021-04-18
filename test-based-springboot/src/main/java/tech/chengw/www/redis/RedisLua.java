@@ -1,4 +1,4 @@
-package tech.chengw.www.redis.lua;
+package tech.chengw.www.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @date 2020/12/18
  **/
 @Component
-public class LuaTest {
+public class RedisLua {
     @Autowired
     private RedisTemplate redisTemplate;
     public static final int maxFailNum = 7;

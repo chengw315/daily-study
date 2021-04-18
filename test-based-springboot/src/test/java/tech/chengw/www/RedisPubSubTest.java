@@ -1,7 +1,6 @@
 package tech.chengw.www;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,7 +15,6 @@ import tech.chengw.www.redis.RedisPubSub;
  * @date 2021/3/18
  **/
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class RedisPubSubTest {
     @Autowired
     private RedisPubSub redisPubSub;

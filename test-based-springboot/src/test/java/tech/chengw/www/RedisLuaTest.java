@@ -1,17 +1,13 @@
 package tech.chengw.www;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.test.context.junit4.SpringRunner;
-import tech.chengw.www.redis.lua.LuaTest;
+import tech.chengw.www.redis.RedisLua;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -26,16 +22,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2020/6/23
  **/
 @SpringBootTest
-@RunWith(SpringRunner.class)
-public class LuaTestTest {
+public class RedisLuaTest {
 
     @Autowired
-    private LuaTest luaTest;
+    private RedisLua redisLua;
     @Autowired
     private RedisTemplate redisTemplate;
     private final String key = "USER:" + "${openId}";
 
-    @Before
+    @BeforeAll
     public void init() {
         redisTemplate.opsForValue().set(key, 100);
     }
@@ -47,7 +42,7 @@ public class LuaTestTest {
         CountDownLatch countDownLatch = new CountDownLatch(200);
         for (int i = 0; i < 200; i++) {
             threadPoolExecutor.execute(() -> {
-                if (luaTest.lua()) {
+                if (redisLua.lua()) {
                     atomicInteger.incrementAndGet();
                 }
                 countDownLatch.countDown();
@@ -60,21 +55,21 @@ public class LuaTestTest {
     @Test
     public void testTryAddSyncFailMessage() throws InterruptedException {
         long tag = 100000000;
-        luaTest.deleteSyncFailMessage(tag);
+        redisLua.deleteSyncFailMessage(tag);
         AtomicInteger atomicInteger = new AtomicInteger();
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(20, 20, 0, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
         int time = 10;
         CountDownLatch countDownLatch = new CountDownLatch(time);
         for (int i = 0; i < time; i++) {
             threadPoolExecutor.execute(() -> {
-                if (luaTest.tryAddSyncFailMessage(tag)) {
+                if (redisLua.tryAddSyncFailMessage(tag)) {
                     atomicInteger.incrementAndGet();
                 }
                 countDownLatch.countDown();
             });
         }
         countDownLatch.await();
-        assert atomicInteger.get() == time - time / LuaTest.maxFailNum;
+        assert atomicInteger.get() == time - time / RedisLua.maxFailNum;
     }
 
     @Test

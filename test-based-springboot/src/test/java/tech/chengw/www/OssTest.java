@@ -3,12 +3,10 @@ package tech.chengw.www;
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import tech.chengw.www.aliyun_oss.AliyunOssService;
 import tech.chengw.www.aliyun_oss.OssProperty;
 
@@ -27,7 +25,6 @@ import java.util.Date;
  * @date 2020/7/27
  **/
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class OssTest {
     private final String pathname = "test.xls";
     @Autowired
@@ -35,7 +32,7 @@ public class OssTest {
     @Autowired
     private OssProperty ossProperty;
 
-    @Before
+    @BeforeAll
     public void before() throws IOException {
         //生成文件
         File file = new File(pathname);

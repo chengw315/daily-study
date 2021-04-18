@@ -27,12 +27,13 @@ public class RedisPipeLine {
             for (int i = 0; i < 20; i++) {
                 //写操作
                 redisTemplate.opsForList().leftPush(key, i);
-                if (i > 10) {
-                    //读操作会立即触发服务器reply，如果读操作较多，不适合使用管道
-                    Object leftPop = redisTemplate.opsForList().leftPop(key);
-                    System.out.println(leftPop);
-                }
+//                if (i > 10) {
+//                    //WARNING 读操作会立即触发服务器reply，使得管道优势无存，如果读操作较多，不适合使用管道
+//                    Object leftPop = redisTemplate.opsForList().leftPop(key);
+//                    System.out.println(leftPop);
+//                }
             }
+            connection.closePipeline();
             return null;
         });
         System.out.println(listTest);

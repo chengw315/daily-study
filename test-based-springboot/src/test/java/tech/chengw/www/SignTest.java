@@ -2,15 +2,11 @@ package tech.chengw.www;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,7 +19,6 @@ import java.util.HashMap;
  * @date 2021/2/2
  **/
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class SignTest {
     @Test
     public void httpInvoke() throws IOException, InterruptedException, CloneNotSupportedException {
